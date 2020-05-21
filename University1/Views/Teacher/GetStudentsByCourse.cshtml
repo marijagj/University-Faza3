@@ -1,0 +1,75 @@
+﻿
+@model University1.Models.CourseStudentsViewModel
+
+@{
+    ViewData["Title"] = "Instructors";
+}
+    <form asp-controller="Teacher" asp-action="GetStudentsByCourse" method="get">
+        <p>
+            Year: <select asp-for="EnrollmentYear" asp-items="Model.Years">
+                <option value="">All</option>
+            </select>
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Courses[0].Students)
+</dt>
+<dd class="col-sm-10">
+    @foreach (var item in Model.Courses)
+        @foreach (var student in item.Students)
+        {<a asp-controller="Administrator" asp-action="StudentDetails" asp-route-id="@student.StudentId"> @student.Student.FullName </a> <br />}
+</dd>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Student.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].ExamPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].SeminalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].ProjectPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].AdditionalPoints)
+            </th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+     @foreach (var ite in Model.Enrollments)
+        {
+         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => ite.Student.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ite.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ite.ExamPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ite.SeminalPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ite.ProjectPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ite.AdditionalPoints)
+            </td>
+        </tr>
+                 }
+    </tbody>
+</table>
+

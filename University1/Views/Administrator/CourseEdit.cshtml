@@ -1,0 +1,80 @@
+﻿@model University1.Models.CourseStudentsVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="CourseEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Enrollments.CourseId" value="@ViewData["Idd"]" class="form-control" readonly type="hidden" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Enrollments.Semester" class="control-label"></label>
+                <input asp-for="Enrollments.Semester" value=" " class="form-control" />
+                <span asp-validation-for="Enrollments.Semester" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enrollments.Year" class="control-label"></label>
+                <input asp-for="Enrollments.Year" value=" " class="form-control" />
+                <span asp-validation-for="Enrollments.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Students</label>
+                <select asp-for="SelectedStudents" class="form-control js-example-basic-multiple" asp-items="Model.StudentList"></select>
+                <span asp-validation-for="SelectedStudents" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="Enrollments.Grade" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Enrollments.SeminalUrl" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.SeminalUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Enrollments.ProjectUrl" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.ProjectUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Enrollments.ExamPoints" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.ExamPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Enrollments.SeminalPoints" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.SeminalPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Enrollments.ProjectPoints" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.ProjectPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Enrollments.AdditionalPoints" class="form-control" readonly type="hidden" />
+                <span asp-validation-for="Enrollments.AdditionalPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="Enrollments.FinishDate" class="text-danger"></span>
+                <input asp-for="Enrollments.FinishDate" class="form-control"readonly type="hidden" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Courses</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

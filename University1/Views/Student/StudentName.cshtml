@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "StudentName";
+}
+
+<h1>Enter your Name:</h1>
+
+<form asp-controller="Student" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>

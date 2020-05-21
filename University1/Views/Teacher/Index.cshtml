@@ -1,0 +1,74 @@
+﻿@model University1.Models.TeacherCourseViewModel
+
+@{
+    ViewData["Title"] = "Courses";
+}
+<h1> Courses</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Programme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].EducationLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].FirstTeacher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].SecondTeacher)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Courses[0].Students)
+            </th>*@
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Programme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EducationLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstTeacher.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondTeacher.FullName)
+                </td>
+                @*<td>
+                    @foreach (var student in item.Students)
+                    {<a asp-controller="Administrator" asp-action="StudentDetails" asp-route-id="@student.StudentId"> @student.Student.FullName </a> <br />}
+                </td>*@
+                <td>
+                    <a asp-action="GetStudentsByCourse" asp-route-id="@item.id">Details</a> 
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
